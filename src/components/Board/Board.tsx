@@ -1,7 +1,14 @@
 //import BoardPiece from "../BoardPiece/BoardPiece.tsx";
+interface BoardPieceInterFace {
+    letter: String;
+    number: String;
+}
 import {data as BoardData} from "../../Data/Board/BoardData.json"
 import styleBoard from "./Board.module.css"
 export default function Board(){
+    function pieceClicked(BoardPiece:BoardPieceInterFace){
+        console.log(BoardPiece)
+    }
     const BoardArray = BoardData.BoardArray;
     console.log(BoardArray)
     return (
@@ -16,9 +23,9 @@ export default function Board(){
                                     BoardField.map((BoardPiece)=>{
                                         console.log(BoardPiece)
                                         return(
-                                            <div className={styleBoard.BoardPiece} key={`${BoardPiece.letter}${BoardPiece.number}`}>
+                                            <button onClick={()=>{pieceClicked(BoardPiece)}} className={styleBoard.BoardPiece} key={`${BoardPiece.letter}${BoardPiece.number}`}>
                                                 {BoardPiece.letter}{BoardPiece.number}
-                                            </div>
+                                            </button>
                                         )
                                     })
                                 }
