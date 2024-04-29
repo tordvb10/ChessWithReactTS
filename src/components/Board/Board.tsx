@@ -1,6 +1,6 @@
 //import BoardPiece from "../BoardPiece/BoardPiece.tsx";
 import {data as BoardData} from "../../Data/Board/BoardData.json"
-export function Board(){
+export default function Board(){
     const BoardArray = BoardData.BoardArray;
     console.log(BoardArray)
     return (
