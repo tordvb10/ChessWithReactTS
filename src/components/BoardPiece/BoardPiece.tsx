@@ -10,6 +10,7 @@ interface propsInterface{
     },
     index: number
 }
+import { useState } from "react"
 import parse from "html-react-parser"
 import styleBoardPiece from "./BoardPiece.module.css"
 import {data as SvgData} from "../../Data/Svg/SvgData.json"
@@ -19,6 +20,7 @@ export default function BoardPiece(props:propsInterface){
     const found = PieceStartData.PieceStart1.find((element)=>{
         return element.number === String(8 - Math.floor(index/8)) && element.letter === String.fromCharCode(65 + index%8)
     })
+    const [piece,setpiece] = useState(found)
     let pieceColor = ""
     if ((index%8)%2 === (Math.floor(index/8))%2){
         pieceColor = "light"
