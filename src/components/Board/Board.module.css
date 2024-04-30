@@ -1,4 +1,4 @@
-.BoardPiece {
-    width: auto;
-    height: auto;
+.GridContainer {
+    width: fit-content;
+    height: fit-content;
 }

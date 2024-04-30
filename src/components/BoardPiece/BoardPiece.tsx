@@ -5,11 +5,12 @@ interface propsInterface{
     }
 }
 export default function BoardPiece(props:propsInterface){
-    console.log(props)
     const BoardPieceEl = props.BoardPieceEl
     return (
         <>
+        <div>
             {BoardPieceEl.letter}{BoardPieceEl.number}
+        </div>
         </>
     )
 }

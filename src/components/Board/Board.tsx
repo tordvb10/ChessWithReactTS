@@ -15,11 +15,11 @@ export default function Board(){
     return (
         <StrictMode>
             <h1>This is Board</h1>
-            <div key="Board" className="GridContainer grid grid-cols-8">
+            <div className={`${styleBoard.GridContainer} justify-center grid grid-cols-8 gap-0`}>
                 {
                     BoardArray.map((BoardField)=>{
                         return(
-                            <StrictMode key={BoardField[0].letter}>
+                            <StrictMode key={BoardField[0].number}>
                                 {
                                     BoardField.map((BoardPieceEl)=>{
                                         return(
