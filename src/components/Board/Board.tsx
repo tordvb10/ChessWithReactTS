@@ -10,6 +10,7 @@ import BoardPiece from "../BoardPiece/BoardPiece.tsx";
 export default function Board(){
     function pieceClicked(BoardPieceEl:BoardPieceInterFace){
         console.log(BoardPieceEl)
+
     }
     const BoardArray = BoardData.BoardArray;
     return (
@@ -23,7 +24,7 @@ export default function Board(){
                                 {
                                     BoardField.map((BoardPieceEl)=>{
                                         return(
-                                            <button onClick={()=>{pieceClicked(BoardPieceEl)}} className={styleBoard.BoardPieceButton} key={`${BoardPieceEl.letter}${BoardPieceEl.number}`}>
+                                            <button id={`${BoardPieceEl.letter}${BoardPieceEl.number}`} onClick={()=>{pieceClicked(BoardPieceEl)}} key={`${BoardPieceEl.letter}${BoardPieceEl.number}`}>
                                                 <BoardPiece BoardPieceEl={BoardPieceEl}/>
                                             </button>
                                         )
