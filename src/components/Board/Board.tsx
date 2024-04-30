@@ -8,10 +8,10 @@ import {data as BoardData} from "../../Data/Board/BoardData.json"
 import styleBoard from "./Board.module.css"
 import {data as PieceStartData} from "../../Data/PieceStart/PieceStartData.json"
 import BoardPiece from "../BoardPiece/BoardPiece.tsx";
+import buttonClicked from "../../Game/buttonClicked.ts";
 export default function Board(){
     function pieceClicked(BoardPieceEl:BoardPieceInterFace){
-        console.log(BoardPieceEl)
-
+        buttonClicked(BoardPieceEl)
     }
     const BoardArray = BoardData.BoardArray;
     return (
@@ -31,7 +31,6 @@ export default function Board(){
                                                 key={`${BoardPieceEl.letter}${BoardPieceEl.number}`}>
                                                 <BoardPiece 
                                                     index={index_i*8+index_j}
-                                                    BoardPieceEl={BoardPieceEl}
                                                     PieceStartData={PieceStartData}
                                                 />
                                             </button>
