@@ -6,6 +6,7 @@ interface BoardPieceInterFace {
 import {StrictMode} from "react";
 import {data as BoardData} from "../../Data/Board/BoardData.json"
 import styleBoard from "./Board.module.css"
+import {data as PieceStartData} from "../../Data/PieceStart/PieceStartData.json"
 import BoardPiece from "../BoardPiece/BoardPiece.tsx";
 export default function Board(){
     function pieceClicked(BoardPieceEl:BoardPieceInterFace){
@@ -18,14 +19,21 @@ export default function Board(){
             <h1>This is Board</h1>
             <div className={`${styleBoard.GridContainer} justify-center grid grid-cols-8 gap-0`}>
                 {
-                    BoardArray.map((BoardField)=>{
+                    BoardArray.map((BoardField,index_i)=>{
                         return(
                             <StrictMode key={BoardField[0].number}>
                                 {
-                                    BoardField.map((BoardPieceEl)=>{
+                                    BoardField.map((BoardPieceEl,index_j)=>{
                                         return(
-                                            <button id={`${BoardPieceEl.letter}${BoardPieceEl.number}`} onClick={()=>{pieceClicked(BoardPieceEl)}} key={`${BoardPieceEl.letter}${BoardPieceEl.number}`}>
-                                                <BoardPiece BoardPieceEl={BoardPieceEl}/>
+                                            <button 
+                                                id={`${BoardPieceEl.letter}${BoardPieceEl.number}`} 
+                                                onClick={()=>{pieceClicked(BoardPieceEl)}} 
+                                                key={`${BoardPieceEl.letter}${BoardPieceEl.number}`}>
+                                                <BoardPiece 
+                                                    index={index_i*8+index_j}
+                                                    BoardPieceEl={BoardPieceEl}
+                                                    PieceStartData={PieceStartData}
+                                                />
                                             </button>
                                         )
                                     })

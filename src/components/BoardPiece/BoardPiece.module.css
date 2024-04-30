@@ -1,0 +1,11 @@
+.PieceBox > svg {
+    height: 40px !important;
+    width: 40px !important;
+    padding: 5px;
+}
+.brown {
+    background-color: #5E4848;
+}
+.light {
+    background-color: whitesmoke;
+}
