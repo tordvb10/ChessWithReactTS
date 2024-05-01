@@ -8,11 +8,7 @@ import {data as BoardData} from "../../Data/Board/BoardData.json"
 import styleBoard from "./Board.module.css"
 import {data as PieceStartData} from "../../Data/PieceStart/PieceStartData.json"
 import BoardPiece from "../BoardPiece/BoardPiece.tsx";
-import buttonClicked from "../../Game/buttonClicked.ts";
 export default function Board(){
-    function pieceClicked(BoardPieceEl:BoardPieceInterFace){
-        buttonClicked(BoardPieceEl)
-    }
     const BoardArray = BoardData.BoardArray;
     return (
         <StrictMode>
@@ -25,15 +21,14 @@ export default function Board(){
                                 {
                                     BoardField.map((BoardPieceEl,index_j)=>{
                                         return(
-                                            <button 
-                                                id={`${BoardPieceEl.letter}${BoardPieceEl.number}`} 
-                                                onClick={()=>{pieceClicked(BoardPieceEl)}} 
+                                            <StrictMode 
                                                 key={`${BoardPieceEl.letter}${BoardPieceEl.number}`}>
                                                 <BoardPiece 
                                                     index={index_i*8+index_j}
                                                     PieceStartData={PieceStartData}
+                                                    BoardPieceEl={BoardPieceEl}
                                                 />
-                                            </button>
+                                            </StrictMode>
                                         )
                                     })
                                 }

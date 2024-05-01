@@ -5,6 +5,10 @@ interface PieceInterface {
     number: String,
 }
 interface propsInterface{
+    BoardPieceEl : {
+        letter: String,
+        number: String,
+    }
     PieceStartData: {
         PieceStart1:  [Array<PieceInterface>]
     },
@@ -14,9 +18,14 @@ import { useState } from "react"
 import parse from "html-react-parser"
 import styleBoardPiece from "./BoardPiece.module.css"
 import {data as SvgData} from "../../Data/Svg/SvgData.json"
+import buttonClicked from "../../Game/buttonClicked.ts";
 export default function BoardPiece(props:propsInterface){
+    function pieceClicked(BoardPieceEl:PieceInterface){
+        buttonClicked(BoardPieceEl)
+    }
     const PieceStartData = props.PieceStartData
     const index = props.index
+    const BoardPieceEl = props.BoardPieceEl
     const found = PieceStartData.PieceStart1.find((element)=>{
         return element.number === String(8 - Math.floor(index/8)) && element.letter === String.fromCharCode(65 + index%8)
     })
@@ -27,9 +36,14 @@ export default function BoardPiece(props:propsInterface){
     } else {
         pieceColor = "brown"
     }
+    console.log(found)
     return (
         <>
-            <div className={`${styleBoardPiece.PieceBox} ${styleBoardPiece[pieceColor]}`}>
+            <button 
+                id={`${BoardPieceEl.letter}${BoardPieceEl.number}`} 
+                className={`${styleBoardPiece.PieceBox} ${styleBoardPiece[pieceColor]}`}
+                onClick={()=>{pieceClicked(found)}}
+            >
                 {
                     (found !== undefined)
                     ?
@@ -37,7 +51,7 @@ export default function BoardPiece(props:propsInterface){
                     :
                     <svg></svg>
                 }
-            </div>
+            </button>
         </>
     )
 }
