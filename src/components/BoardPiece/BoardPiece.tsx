@@ -10,7 +10,8 @@ interface propsInterface{
         number: String,
     }
     index: number,
-    step?: BoardPieceInterface[]
+    step?: BoardPieceInterface[],
+    setstepinchild: (stepsinchild:BoardPieceInterface[]|undefined) => void 
 }
 import {data as PieceStartData} from "../../Data/PieceStart/PieceStartData.json"
 import { useState } from "react"
@@ -19,7 +20,9 @@ import styleBoardPiece from "./BoardPiece.module.css"
 import {data as SvgData} from "../../Data/Svg/SvgData.json"
 import buttonClicked from "../../Game/buttonClicked.ts";
 export default function BoardPiece(props:propsInterface){
-    function pieceClicked(piecefunk:BoardPieceInterface,stepfunk:Array<BoardPieceInterface>){
+    function pieceClicked(piecefunk:BoardPieceInterface,stepfunk:BoardPieceInterface[]|undefined){
+        console.log(piecefunk)
+        console.log(stepfunk)
         const returndata = buttonClicked(piecefunk,stepfunk)
         console.log(returndata)
     }
