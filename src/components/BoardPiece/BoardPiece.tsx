@@ -27,6 +27,7 @@ export default function BoardPiece(props:propsInterface){
         console.log(returndata)
     }
     console.log(props)
+    let acp: string = "acp"
     console.log(acp)
     const step = props.step
     const index = props.index
